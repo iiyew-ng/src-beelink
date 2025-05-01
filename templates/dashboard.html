@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block title %}Bảng Điều Khiển - Trình Rút Gọn Liên Kết{% endblock %}
+
+{% block content %}
+<section class="dashboard">
+    <div class="dashboard-header">
+        <h1>Bảng Điều Khiển</h1>
+        <p class="welcome-message">Chào mừng trở lại, <span class="username">{{ email }}</span></p>
+    </div>
+
+    <div class="create-url-container">
+        <h2>Tạo Liên Kết</h2>
+        <form action="{{ url_for('shorten') }}" method="post" class="create-url-form">
+            <div class="form-group url-input-group">
+                <input type="url" id="url" name="url" required placeholder="Nhập URL cần rút gọn">
+                <button type="submit" class="btn btn-primary">Rút Gọn</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="urls-container">
+        <h2>Liên Kết Của Bạn</h2>
+        
+        {% if links %}
+        <div class="url-list">
+            {% for link in links %}
+            <div class="url-card">
+                <div class="url-info">
+                    <h3 class="original-url" title="{{ link.original_url }}">{{ link.original_url }}</h3>
+                    <div class="short-url-container">
+                        <a href="{{ url_for('redirect_short_url', short_code=link.short_code, _external=True) }}" class="short-url" target="_blank">
+                            {{ request.host_url }}{{ link.short_code }}
+                        </a>
+                        <button class="copy-btn" onclick="copyToClipboard('{{ request.host_url }}{{ link.short_code }}')">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                            </svg>
+                            <span>Sao chép</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="url-stats">
+                    <div class="stat">
+                        <span class="stat-value">{{ link.short_code }}</span>
+                        <span class="stat-label">Mã Rút Gọn</span>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="empty-state">
+            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+            </svg>
+            <h3>Chưa có liên kết nào</h3>
+            <p>Tạo liên kết rút gọn đầu tiên của bạn ở phía trên</p>
+        </div>
+        {% endif %}
+    </div>
+</section>
+
+<script>
+    function copyToClipboard(text) {
+        navigator.clipboard.writeText(text).then(function() {
+            const copyBtn = event.currentTarget;
+            const originalText = copyBtn.querySelector('span').textContent;
+            copyBtn.querySelector('span').textContent = 'Đã sao chép!';
+            copyBtn.classList.add('copied');
+
+            setTimeout(function() {
+                copyBtn.querySelector('span').textContent = originalText;
+                copyBtn.classList.remove('copied');
+            }, 2000);
+        });
+    }
+</script>
+{% endblock %}

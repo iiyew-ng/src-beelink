@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block title %}Đăng nhập - Trình rút gọn URL{% endblock %}
+
+{% block content %}
+<section class="auth-container">
+    <div class="auth-card">
+        <h1>Chào mừng trở lại</h1>
+        <p class="subtitle">Đăng nhập để truy cập các liên kết đã rút gọn của bạn</p>
+        
+        <form action="{{ url_for('login') }}" method="post" class="auth-form">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required placeholder="Nhập email của bạn">
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Mật khẩu</label>
+                <input type="password" id="password" name="password" required placeholder="Nhập mật khẩu của bạn">
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Đăng nhập</button>
+        </form>
+        
+        <div class="auth-footer">
+            <p>Chưa có tài khoản? <a href="{{ url_for('register') }}">Đăng ký</a></p>
+        </div>
+    </div>
+    
+    <div class="auth-image">
+        <div class="image-container">
+            <svg xmlns="http://www.w3.org/2000/svg" width="240" height="240" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" class="feature-icon">
+                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+            </svg>
+        </div>
+        <div class="features">
+            <div class="feature">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Dễ sử dụng</span>
+            </div>
+            <div class="feature">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Liên kết an toàn</span>
+            </div>
+            <div class="feature">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Miễn phí sử dụng</span>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
