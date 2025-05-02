@@ -1,8 +1,5 @@
 User-agent: *
-Disallow: /login
-Disallow: /logout
-Disallow: /register
-Disallow: /error
+Disallow: 
 Allow: /
 
 Sitemap: https://beelink.click/sitemap.xml

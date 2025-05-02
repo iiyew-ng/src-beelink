@@ -1,6 +1,6 @@
 services:
   web:
-    image: ng2104/beelink:dev1.1
+    image: ng2104/beelink:2.2
     container_name: beelink
     ports:
       - "3003:5000"

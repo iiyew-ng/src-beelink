@@ -19,7 +19,6 @@ def generate_code(length=6):
 
 @url_bp.route('/shorten', methods=['POST'])
 def shorten():
-
     if 'user' not in session:
         return redirect(url_for('auth.login'))
     
@@ -31,7 +30,11 @@ def shorten():
         "short_code": code,
         "user_id": user_data['_id']
     })
-    short_url = request.url_root + code
+    
+
+    scheme = "https" if request.is_secure else "http"
+    short_url = f"{scheme}://{request.host}/{code}"
+    
     flash(f'URL rút gọn: {short_url}')
 
     return redirect(url_for('auth.index'))
