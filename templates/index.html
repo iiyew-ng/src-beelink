@@ -8,8 +8,8 @@
         <h1>Rút gọn liên kết, mở rộng phạm vi tiếp cận</h1>
         <p class="hero-subtitle">Tạo liên kết ngắn, dễ nhớ để chuyển hướng đến URL dài. Miễn phí, nhanh chóng và an toàn.</p>
         <div class="hero-actions">
-            <a href="{{ url_for('register') }}" class="btn btn-primary">Bắt đầu</a>
-            <a href="{{ url_for('login') }}" class="btn btn-outline">Đăng nhập</a>
+            <a href="{{ url_for('auth.register') }}" class="btn btn-primary">Bắt đầu</a>
+            <a href="{{ url_for('auth.login') }}" class="btn btn-outline">Đăng nhập</a>
         </div>
     </div>
     <div class="hero-image">
@@ -131,7 +131,7 @@
     <div class="cta-content">
         <h2>Sẵn sàng rút gọn liên kết?</h2>
         <p>Tham gia cùng hàng ngàn người dùng đang tin tưởng BeeLink cho nhu cầu rút gọn URL của họ.</p>
-        <a href="{{ url_for('register') }}" class="btn btn-primary">Tạo tài khoản miễn phí</a>
+        <a href="{{ url_for('auth.register') }}" class="btn btn-primary">Tạo tài khoản miễn phí</a>
     </div>
 </section>
 {% endblock %}

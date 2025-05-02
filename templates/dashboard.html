@@ -11,7 +11,7 @@
 
     <div class="create-url-container">
         <h2>Tạo Liên Kết</h2>
-        <form action="{{ url_for('shorten') }}" method="post" class="create-url-form">
+        <form action="{{ url_for('url.shorten') }}" method="post" class="create-url-form">
             <div class="form-group url-input-group">
                 <input type="url" id="url" name="url" required placeholder="Nhập URL cần rút gọn">
                 <button type="submit" class="btn btn-primary">Rút Gọn</button>
@@ -29,7 +29,7 @@
                 <div class="url-info">
                     <h3 class="original-url" title="{{ link.original_url }}">{{ link.original_url }}</h3>
                     <div class="short-url-container">
-                        <a href="{{ url_for('redirect_short_url', short_code=link.short_code, _external=True) }}" class="short-url" target="_blank">
+                        <a href="{{ url_for('redirect.redirect_short_url', short_code=link.short_code, _external=True) }}" class="short-url" target="_blank">
                             {{ request.host_url }}{{ link.short_code }}
                         </a>
                         <button class="copy-btn" onclick="copyToClipboard('{{ request.host_url }}{{ link.short_code }}')">

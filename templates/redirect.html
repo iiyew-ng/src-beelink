@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đang chuyển hướng...</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+    <style>
+        :root {
+            --primary-color: #3b82f6;
+            --primary-hover: #2563eb;
+            --text-color: #1f2937;
+            --text-muted: #6b7280;
+            --bg-color: #ffffff;
+            --bg-secondary: #f9fafb;
+            --border-color: #e5e7eb;
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --radius: 0.5rem;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+            background-color: var(--bg-secondary);
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .redirect-container {
+            background-color: var(--bg-color);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-md);
+            padding: 2.5rem;
+            max-width: 500px;
+            width: 100%;
+        }
+        
+        .logo {
+            margin-bottom: 1.5rem;
+            display: inline-block;
+        }
+        
+        .logo-icon {
+            stroke: var(--primary-color);
+            width: 40px;
+            height: 40px;
+        }
+        
+        h1 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+        }
+        
+        .destination {
+            background-color: var(--bg-secondary);
+            padding: 1rem;
+            border-radius: var(--radius);
+            margin: 1.5rem 0;
+            word-break: break-all;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        
+        .destination strong {
+            color: var(--text-color);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .loader {
+            margin: 2rem auto;
+            position: relative;
+            width: 60px;
+            height: 60px;
+        }
+        
+        .loader-circle {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 4px solid transparent;
+            border-top-color: var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        .loader-circle:nth-child(2) {
+            border-top-color: transparent;
+            border-right-color: var(--primary-color);
+            animation-duration: 1.3s;
+        }
+        
+        .loader-circle:nth-child(3) {
+            width: 40px;
+            height: 40px;
+            top: 10px;
+            left: 10px;
+            border-top-color: transparent;
+            border-left-color: var(--primary-color);
+            animation-duration: 0.7s;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background-color: var(--bg-secondary);
+            border-radius: 3px;
+            overflow: hidden;
+            margin: 1.5rem 0;
+        }
+        
+        .progress {
+            height: 100%;
+            background-color: var(--primary-color);
+            border-radius: 3px;
+            width: 0%;
+            animation: progress 1s linear forwards;
+        }
+        
+        .message {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .cancel-link {
+            display: inline-block;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+        
+        .cancel-link:hover {
+            text-decoration: underline;
+        }
+        
+        .security-note {
+            margin-top: 1.5rem;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        
+        .security-icon {
+            width: 16px;
+            height: 16px;
+            stroke: var(--text-muted);
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @keyframes progress {
+            0% { width: 0%; }
+            100% { width: 100%; }
+        }
+        
+        @media (max-width: 640px) {
+            .redirect-container {
+                padding: 1.5rem;
+            }
+            
+            h1 {
+                font-size: 1.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="redirect-container">
+        <div class="logo">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="logo-icon">
+                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+            </svg>
+        </div>
+        
+        <h1>Đang chuyển hướng bạn tới đường dẫn...</h1>
+        
+        <div class="destination">
+            <strong>Đích đến:</strong>
+            <span id="destination-url">{{ original_url }}</span>
+        </div>
+        
+        <div class="loader">
+            <div class="loader-circle"></div>
+            <div class="loader-circle"></div>
+            <div class="loader-circle"></div>
+        </div>
+        
+        <div class="progress-bar">
+            <div class="progress"></div>
+        </div>
+        
+        <p class="message">Bạn sẽ được chuyển hướng tự động sau <span id="countdown">3</span> giây</p>
+        
+        <a href="{{ original_url }}" class="cancel-link">Nhấn vào đây nếu bạn không được chuyển hướng tự động</a>
+        
+        <div class="security-note">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="security-icon">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            </svg>
+            <span>LinkShort không chịu trách nhiệm về nội dung của trang web đích</span>
+        </div>
+    </div>
+    
+    <script>
+        // Countdown timer
+        let seconds = 3;
+        const countdownElement = document.getElementById('countdown');
+        
+        const countdownInterval = setInterval(function() {
+            seconds--;
+            countdownElement.textContent = seconds;
+            
+            if (seconds <= 0) {
+                clearInterval(countdownInterval);
+                window.location.href = "{{ original_url }}";
+            }
+        }, 1000);
+        
+        // Truncate long URLs for display
+        const destinationUrl = document.getElementById('destination-url');
+        const url = destinationUrl.textContent;
+        
+        if (url.length > 50) {
+            destinationUrl.textContent = url.substring(0, 47) + '...';
+            destinationUrl.title = url; // Show full URL on hover
+        }
+    </script>
+</body>
+</html>
